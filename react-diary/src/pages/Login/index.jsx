@@ -1,6 +1,15 @@
+/*
+ * @Author: leohams
+ * @Date: 2024-09-10 09:32:09
+ * @LastEditors: fang
+ * @LastEditTime: 2024-09-11 17:21:48
+ * @FilePath: \react-proj\react-diary\src\pages\Login\index.jsx
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+ */
 import React from 'react';
 import LoginPage, { Username, Password, Submit, Title, Logo, Footer } from '@react-login-page/page5';
-import LoginLogo from 'react-login-page/logo';
 import './index.css'
 const css = {
     '--login-bg': '#333',
@@ -16,26 +25,23 @@ const css = {
     '--login-btn-hover': '#3648c6',
     '--login-btn-active': '#5b6ef4',
     '--login-footer': '#ffffff99',
-  };
+    '--login-page4-logo': 'url(https://cdn.jsdelivr.net/gh/leohams/cdn@main/img/logo.png)',
+};
 
 const Login = () => (
-    <div style={{ height: '100vh'}}>
+    <div style={{ height: '100vh' }}>
         <LoginPage style={css}>
-            <Username name="userUserName" placeholder="请输入用户名"/>
+            <Username name="userUserName" placeholder="请输入用户名" />
             <Password placeholder="请输入密码" name="userPassword" />
             <Submit>提交</Submit>
             <Submit type="reset" keyname="reset">
                 重置
             </Submit>
-            <Title />
-            <Logo>
-                <LoginLogo />
-            </Logo>
-            <Footer>
-                Not a member? <a href="#">Sign up now</a>
-            </Footer>
-        </LoginPage>
-    </div>
+        <Footer>
+            Not a member? <a href="#">Sign up now</a>
+        </Footer>
+    </LoginPage>
+    </div >
 );
 
 export default Login;

@@ -2,7 +2,7 @@
  * @Author: leohams
  * @Date: 2024-09-10 14:49:29
  * @LastEditors: fang
- * @LastEditTime: 2024-09-10 18:55:48
+ * @LastEditTime: 2024-09-11 15:15:50
  * @FilePath: \react-proj\react-diary\src\pages\Layout\index.jsx
  * @Description: 
  * 
@@ -10,9 +10,13 @@
  */
 import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Popconfirm, Avatar } from 'antd';
 import './index.css';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import {
+  LogoutOutlined,
+} from '@ant-design/icons'
+import '../../assets/user.png'
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -79,6 +83,16 @@ const LayoutPage = () => {
           className="header-menu"
           onClick={menuClick}
         />
+        
+        <div className="user-info">
+        <Avatar src={<img src='https://api.dicebear.com/7.x/miniavs/svg?seed=8' alt="avatar" />} />
+          <span className="user-name">leohams</span>
+          <span className="user-logout">
+            <Popconfirm title="是否确认退出？" okText="退出" cancelText="取消">
+              <LogoutOutlined />
+            </Popconfirm>
+          </span>
+        </div>
       </Header>
 
       {/* 内容 */}
