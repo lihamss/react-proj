@@ -1,47 +1,62 @@
-/*
- * @Author: leohams
- * @Date: 2024-09-10 09:32:09
- * @LastEditors: fang
- * @LastEditTime: 2024-09-11 17:21:48
- * @FilePath: \react-proj\react-diary\src\pages\Login\index.jsx
- * @Description: 
- * 
- * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
- */
 import React from 'react';
-import LoginPage, { Username, Password, Submit, Title, Logo, Footer } from '@react-login-page/page5';
 import './index.css'
-const css = {
-    '--login-bg': '#333',
-    '--login-color': '#fff',
-    '--login-input': '#333',
-    '--login-input-bg': '#fff',
-    '--login-input-before': 'rgb(62 41 255 / 15%)',
-    '--login-input-after': 'rgb(49 141 255 / 20%)',
-    '--login-inner-bg': '#ffffffd1',
-    '--login-btn': '#fff',
-    '--login-btn-bg': '#f45b5b',
-    '--login-btn-focus': '#3648c6',
-    '--login-btn-hover': '#3648c6',
-    '--login-btn-active': '#5b6ef4',
-    '--login-footer': '#ffffff99',
-    '--login-page4-logo': 'url(https://cdn.jsdelivr.net/gh/leohams/cdn@main/img/logo.png)',
+import classNames from 'classnames';
+const Login = () => {
+    const [isSignup, setIsSignup] = React.useState(false);
+    const changeType = () => {
+        setIsSignup(!isSignup);
+    }
+    return (
+        <div className={classNames('dowebok', { 's--signup': isSignup })}>
+            <div className="form sign-in">
+                <h2>欢迎回来</h2>
+                <label>
+                    {/* <span>邮箱</span> */}
+                    <input type="email" placeholder='请输入您的邮箱'/>
+                </label>
+                <label>
+                    {/* <span>密码</span> */}
+                    <input type="password" placeholder='密码'/>
+                </label>
+                <p className="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+                <button type="button" className="submit">登 录</button>
+                <button type="button" className="fb-btn">使用 <span>facebook</span> 帐号登录</button>
+            </div>
+            <div className="sub-cont">
+                <div className="img">
+                    <div className="img__text m--up">
+                        <h2>还未注册？</h2>
+                        <p>立即注册，发现大量机会！</p>
+                    </div>
+                    <div className="img__text m--in">
+                        <h2>已有帐号？</h2>
+                        <p>有帐号就登录吧，好久不见了！</p>
+                    </div>
+                    <div className="img__btn" onClick={changeType}>
+                        <span className="m--up">注 册</span>
+                        <span className="m--in">登 录</span>
+                    </div>
+                </div>
+                <div className="form sign-up">
+                    <h2>立即注册</h2>
+                    <label>
+                        {/* <span>用户名</span> */}
+                        <input type="text" placeholder='用户名'/>
+                    </label>
+                    <label>
+                        {/* <span>邮箱</span> */}
+                        <input type="email" placeholder='请输入您的邮箱'/>
+                    </label>
+                    <label>
+                        {/* <span>密码</span> */}
+                        <input type="password" placeholder='设置密码'/>
+                    </label>
+                    <button type="button" className="submit">注 册</button>
+                    <button type="button" className="fb-btn">使用 <span>facebook</span> 帐号注册</button>
+                </div>
+            </div>
+        </div>
+
+    );
 };
-
-const Login = () => (
-    <div style={{ height: '100vh' }}>
-        <LoginPage style={css}>
-            <Username name="userUserName" placeholder="请输入用户名" />
-            <Password placeholder="请输入密码" name="userPassword" />
-            <Submit>提交</Submit>
-            <Submit type="reset" keyname="reset">
-                重置
-            </Submit>
-        <Footer>
-            Not a member? <a href="#">Sign up now</a>
-        </Footer>
-    </LoginPage>
-    </div >
-);
-
 export default Login;

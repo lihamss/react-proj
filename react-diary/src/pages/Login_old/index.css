@@ -1,0 +1,31 @@
+[data-color-mode*='dark'] .login-page5,
+.login-page5 {
+  --login-bg: #f45b69;
+  --login-inner-bg: white;
+  --login-color: #fff;
+  --login-input: #333;
+  --login-input-bg: #fff;
+  --login-input-before: rgba(69, 105, 144, 0.15);
+  --login-input-after: rgba(2, 128, 144, 0.2);
+  --login-btn: #fff;
+  --login-btn-bg: #f45b69;
+  --login-btn-focus: #f24353;
+  --login-btn-hover: #f24353;
+  --login-btn-active: #d82a3b;
+  --login-footer: #ffffff99;
+}
+[data-color-mode*='light'] .login-page5 {
+  --login-bg: #f45b69;
+  --login-inner-bg: white;
+  --login-color: #fff;
+  --login-input: #333;
+  --login-input-bg: #fff;
+  --login-input-before: rgba(69, 105, 144, 0.15);
+  --login-input-after: rgba(2, 128, 144, 0.2);
+  --login-btn: #fff;
+  --login-btn-bg: #f45b69;
+  --login-btn-focus: #f24353;
+  --login-btn-hover: #f24353;
+  --login-btn-active: #d82a3b;
+  --login-footer: #ffffff99;
+}
