@@ -1,10 +1,21 @@
+/*
+ * @Author: leohams
+ * @Date: 2024-09-10 18:14:24
+ * @LastEditors: fang
+ * @LastEditTime: 2024-09-14 16:32:05
+ * @FilePath: \react-proj\react-diary\src\components\content\NoteItem.jsx
+ * @Description: 
+ * 
+ * Copyright (c) 2024 by ${git_name_email}, All Rights Reserved. 
+ */
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
 const { Meta } = Card;
-const NoteItem = () => {
+const NoteItem = ({changeLayout}) => {
+  
   return (
-    <div className='card-item'>
+    <div className='card-item' onClick={changeLayout}>
       <Card
         hoverable={true}
         style={{

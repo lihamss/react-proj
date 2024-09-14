@@ -1,15 +1,24 @@
+.home-container {
+    display: flex; 
+  }
+
 /* 卡片容器样式 */
 .daily-report-container {
     display: flex; 
     flex-direction: column;
-    height: 100%; /* 让容器占满父元素 */
+    height: calc(100vh - 220px); /* 让容器占满父元素 */
+    /* overflow: auto; */
+}
+
+.half-width {
+    flex: 1;
 }
 
 /* 卡片容器，使用网格布局来避免卡片被拉伸 */
 .card-container {
     flex-grow: 1; /* 让卡片容器占据剩余空间 */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 设定每个卡片最小宽度为250px，并根据页面宽度自适应 */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* 设定每个卡片最小宽度为250px，并根据页面宽度自适应 */
     gap: 6px; /* 卡片之间的间距 */
     justify-items: center; /* 卡片居中排列 */
     overflow-y: auto; /* 启用滚动条，如果内容太多 */
@@ -23,22 +32,7 @@
 .ant-card-body {
     padding: 8px;
 }
-.card-pager {
-    /* position: sticky;
-    bottom: 0; */
-    display: flex;
-    justify-content: center;
-    /* 确保分页组件居中 */
-    align-items: center;
-    /* 垂直居中 */
-    background-color: #fff;
-    /* 确保背景色，防止内容透出 */
-    /* padding: 4px 0; */
-    /* 为分页组件添加上下间距 */
-    z-index: 10;
-    /* 确保分页组件在内容上方 */
-    margin-top: auto; /* 自动将分页组件推到容器底部 */
-}
+
 
 .card-item {
     max-width: 260px; /* 设置每个卡片的最大宽度 */
@@ -46,4 +40,17 @@
     height: 305px; /* 高度自动适应内容 */
     border-radius: 8px; /* 添加圆角效果 */
     overflow: hidden; /* 确保内容不会溢出 */
+}
+
+
+.card-detail {
+    flex-grow: 1; /* 让卡片容器占据剩余空间 */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* 设定每个卡片最小宽度为250px，并根据页面宽度自适应 */
+    gap: 6px; /* 卡片之间的间距 */
+    justify-items: center; /* 卡片居中排列 */
+    overflow-y: auto; /* 启用滚动条，如果内容太多 */
+    padding: 5px;
+    background-color: #f9f9f9;
+    height: calc(100vh - 220px); /* 让容器占满父元素 */
 }

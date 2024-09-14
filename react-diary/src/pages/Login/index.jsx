@@ -10,13 +10,14 @@ const Login = () => {
         <div className={classNames('dowebok', { 's--signup': isSignup })}>
             <div className="form sign-in">
                 <h2>欢迎回来</h2>
+                
                 <label>
                     {/* <span>邮箱</span> */}
-                    <input type="email" placeholder='请输入您的邮箱'/>
+                    <input type="email" placeholder='请输入您的邮箱' />
                 </label>
                 <label>
                     {/* <span>密码</span> */}
-                    <input type="password" placeholder='密码'/>
+                    <input type="password" placeholder='密码' />
                 </label>
                 <p className="forgot-pass"><a href="javascript:">忘记密码？</a></p>
                 <button type="button" className="submit">登 录</button>
@@ -41,15 +42,15 @@ const Login = () => {
                     <h2>立即注册</h2>
                     <label>
                         {/* <span>用户名</span> */}
-                        <input type="text" placeholder='用户名'/>
+                        <input type="text" placeholder='用户名' />
                     </label>
                     <label>
                         {/* <span>邮箱</span> */}
-                        <input type="email" placeholder='请输入您的邮箱'/>
+                        <input type="email" placeholder='请输入您的邮箱' />
                     </label>
                     <label>
                         {/* <span>密码</span> */}
-                        <input type="password" placeholder='设置密码'/>
+                        <input type="password" placeholder='设置密码' />
                     </label>
                     <button type="button" className="submit">注 册</button>
                     <button type="button" className="fb-btn">使用 <span>facebook</span> 帐号注册</button>
