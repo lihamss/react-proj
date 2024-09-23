@@ -14,7 +14,8 @@ body {
 }
 
 input,
-button {
+button,
+.submit {
     border: none;
     outline: none;
     background: none;
@@ -263,6 +264,7 @@ input::placeholder {
     margin-bottom: 20px;
     background: #d4af7a;
     text-transform: uppercase;
+    
 }
 
 .fb-btn {
