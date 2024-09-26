@@ -3,6 +3,7 @@
     "@craco/craco": "^7.1.0"
   },
   "dependencies": {
-    "classnames": "^2.5.1"
+    "classnames": "^2.5.1",
+    "nanoid": "^5.0.7"
   }
 }

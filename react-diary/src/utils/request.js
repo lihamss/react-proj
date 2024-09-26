@@ -2,7 +2,7 @@
  * @Author: leohams
  * @Date: 2024-09-04 09:35:35
  * @LastEditors: fang
- * @LastEditTime: 2024-09-23 19:24:24
+ * @LastEditTime: 2024-09-24 16:22:55
  * @FilePath: \react-proj\react-diary\src\utils\request.js
  * @Description: 
  * 
@@ -13,16 +13,18 @@ import { getToken } from './token'
 import { clearToken } from './token'
 // import router from '@/router'
 const request = axios.create({
+  // baseURL: 'http://106.14.170.164:9001',
   baseURL: 'http://localhost:9001',
   timeout: 5000
 })
 
 // 添加请求拦截器
 request.interceptors.request.use((config) => {
-  // const token = getToken()
-  // if (token) {
-  //   config.headers.Authorization = `Bearer ${token}`
-  // }
+  const token = getToken()
+  if (token) {
+    // config.headers.Authorization = `Bearer ${token}`
+    config.headers['x-auth-token'] = token;
+  }
   return config
 }, (error) => {
   return Promise.reject(error)
@@ -42,12 +44,12 @@ request.interceptors.response.use((response) => {
 }, (error) => {
   // 超出 2xx 范围的状态码都会触发该函数。
   // 对响应错误做点什么
-  // console.dir(error)
-  // if (error.response.status === 401) {
-  //   clearToken()
-  //   router.navigate('/login')
-  //   window.location.reload()
-  // }
+  console.dir(error)
+  if (error.response.status === 401) {
+    clearToken()
+    // router.navigate('/login')
+    // window.location.reload()
+  }
   return Promise.reject(error)
 })
 

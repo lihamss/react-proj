@@ -2,7 +2,7 @@
  * @Author: leohams
  * @Date: 2024-09-18 14:56:35
  * @LastEditors: fang
- * @LastEditTime: 2024-09-23 20:01:59
+ * @LastEditTime: 2024-09-24 15:54:27
  * @FilePath: \react-proj\react-diary\src\store\modules\user\index.js
  * @Description: 
  * 
@@ -10,7 +10,7 @@
  */
 import { createSlice } from "@reduxjs/toolkit";
 import { getProfileAPI, loginAPI } from "@/apis/user";
-import { getToken, setToken } from "@/utils/token";
+import { getToken, setToken, clearToken } from "@/utils/token";
 
 const userStore = createSlice({
     name: 'user',
@@ -27,7 +27,9 @@ const userStore = createSlice({
             state.userInfo = action.payload;
         },
         clearUserInfo(state) {
-            state.userInfo = {};
+            state.token = ''
+            state.userInfo = {}
+            clearToken()
         }
     }
 })
@@ -46,12 +48,12 @@ const fetchLogin = (loginForm) => {
     }
 }
 
-// const fetchUserInfo = () => {
-//     return async (dispatch) => {
-//         const res = await getProfileAPI()
-//         dispatch(setUserInfo(res.data))
-//     }
-// }
+const fetchUserInfo = () => {
+    return async (dispatch) => {
+        const res = await getProfileAPI()
+        dispatch(setUserInfo(res.data))
+    }
+}
 
-export { fetchLogin }
+export { fetchLogin, setUserInfo, clearUserInfo, fetchUserInfo }
 export default userReducer

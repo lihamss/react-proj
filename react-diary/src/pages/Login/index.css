@@ -71,12 +71,16 @@ button,
 button {
     display: block;
     margin: 0 auto;
-    width: 260px;
+    /* width: 260px; */
     height: 36px;
     border-radius: 30px;
     color: #fff;
     font-size: 15px;
     cursor: pointer;
+}
+
+.submit, .fb-btn, .submit {
+    width: 260px;
 }
 
 .img {
