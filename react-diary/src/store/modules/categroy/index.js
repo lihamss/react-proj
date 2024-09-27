@@ -18,6 +18,7 @@ const categoryStore = createSlice({
     },
     reducers: {
         setCategoryList1(state, action) {
+            console.log('Setting category list:', action.payload);
             state.categoryList1 = action.payload
         },
     }

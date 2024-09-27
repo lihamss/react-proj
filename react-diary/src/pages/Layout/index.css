@@ -40,7 +40,7 @@
 .content {
     flex: 1;
     /* 使内容区域占据除 header 和 footer 外的所有可用空间 */
-    padding: 0 48px;
+    padding: 10px 48px;
     /* 左右各添加 48px 的内边距 */
     margin-top: var(--header-height, 64px);
     /* 顶部外边距，为固定的 header 腾出空间 */
@@ -48,7 +48,7 @@
     /* 为 footer 腾出空间，使用 CSS 变量 */
     overflow-y: auto;
     /* 当内容超出容器高度时，显示垂直滚动条 */
-    min-height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 70px));
+    min-height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 25px));
 }
 
 /* 面包屑导航样式 */
@@ -63,7 +63,7 @@
     /* 设置背景色为白色 */
     border-radius: 8px;
     /* 添加圆角效果 */
-    height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 70px) - 32px);
+    height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 25px) - 30px);
     /* 考虑 header、footer 和额外空间 */
 }
 
@@ -71,7 +71,7 @@
 .sider {
     background: #fff;
     /* 设置侧边栏背景色为白色 */
-    margin: 0 0 36px 0;
+    /* margin: 0 0 36px 0; */
     /* 在侧边栏底部添加 36px 的外边距 */
 }
 
@@ -82,7 +82,7 @@
     min-height: 280px;
     /* 设置内容区域的最小高度为 280px */
     /* 使用calc动态调整高度，减去header和footer的高度 */
-    height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 70px) - 32px);
+    height: calc(100vh - var(--header-height, 64px) - var(--footer-height, 25px) - 32px);
     overflow-y: auto;
     /* 当内容超出时启用垂直滚动条 */
     border-radius: 8px;
@@ -103,9 +103,9 @@
     /* 使 footer 宽度占满整个视口 */
     text-align: center;
     /* 使 footer 中的文本居中对齐 */
-    padding: 16px 50px;
+    padding: 5px 50px;
     /* 在 footer 上下添加 16px、左右添加 50px 的内边距 */
-    height: var(--footer-height, 70px);
+    height: var(--footer-height, 25px);
     /* 使用 CSS 变量，默认为 70px（包括 padding） */
     z-index: 1;
     /* 确保 footer 显示在其他内容之上 */

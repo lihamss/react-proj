@@ -2,7 +2,7 @@
  * @Author: leohams
  * @Date: 2024-09-10 14:51:18
  * @LastEditors: fang
- * @LastEditTime: 2024-09-24 15:04:46
+ * @LastEditTime: 2024-09-27 17:11:09
  * @FilePath: \react-proj\react-diary\src\router\index.js
  * @Description: 
  * 
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DailyReport />
+                element: <DailyReport />,
             },
             {
                 path: 'new',
@@ -31,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: 'website',
                 element: <Website />
+            },
+            {
+                path: ':dynamicPath', // 使用动态路由参数
+                element: <DailyReport />,
             },
         ]    
     },

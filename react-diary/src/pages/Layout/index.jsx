@@ -2,7 +2,7 @@
  * @Author: leohams
  * @Date: 2024-09-10 14:49:29
  * @LastEditors: fang
- * @LastEditTime: 2024-09-26 14:44:05
+ * @LastEditTime: 2024-09-27 17:12:45
  * @FilePath: \react-proj\react-diary\src\pages\Layout\index.jsx
  * @Description: 
  * 
@@ -13,9 +13,6 @@ import * as Icons from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme, Popconfirm, Avatar } from 'antd';
 import './index.css';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import {
-  LogoutOutlined,
-} from '@ant-design/icons'
 import '../../assets/user.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserInfo, clearUserInfo } from '@/store/modules/user';
@@ -24,12 +21,17 @@ import { UnorderedListOutlined, PlusOutlined } from '@ant-design/icons';
 import { FloatButton } from 'antd';
 import AddContent from '../AddContent';
 import { useState } from 'react';
+import CommonSider from '@/components/CommonSider';
+import CommonFooter from '@/components/CommonFooter';
+import CommonHeader from '@/components/CommonHeader';
 
-
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const LayoutPage = () => {
   const dispatch = useDispatch()
+
+
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [contentType, setContentType] = useState(null);
   const username = useSelector(state => state.user.userInfo.username)
@@ -43,10 +45,10 @@ const LayoutPage = () => {
   const selectedKey = [location.pathname]
   const navigate = useNavigate()
 
-  const selectCategory = category1List.filter(item=>item.path === selectedKey[0])
+  const selectCategory = category1List.filter(item => item.path === selectedKey[0])
   console.log(selectCategory)
 
-  const items2 = selectCategory.length === 0 ? [{}] :selectCategory[0]["children"].map(item => {
+  const items2 = selectCategory.length === 0 ? [{}] : selectCategory[0]["children"].map(item => {
     const IconComponent = Icons[item.icon];
     return {
       label: item.name,
@@ -56,13 +58,40 @@ const LayoutPage = () => {
         const IconComponent2 = Icons[child.icon];
         return {
           label: child.name,
-          key: child.path,
+          key: child.id,
           icon: IconComponent2 ? <IconComponent2 /> : null,
         }
       })
     }
   })
 
+
+  // // 初始化默认打开的子菜单和选中的菜单项
+  // const defaultOpenKey = items2[0]?.key || '';
+  // const defaultSelectedKey = items2[0]?.children?.[0]?.key || '';
+  // // console.log("defOpenn", defaultOpenKey)
+  // const [openKeys, setOpenKeys] = useState([defaultOpenKey]);
+  // const [selectedMenuKey, setSelectedMenuKey] = useState(defaultSelectedKey);
+
+  const handleClick = (e) => {
+    // setSelectedMenuKey(e.key);
+    console.log(e.key)
+    navigate('/' + e.key)
+  };
+
+  // const onOpenChange = (keys) => {
+  //   const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
+  //   setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+  // };
+
+
+  // useEffect(() => {
+  //   // 默认展开第一个子菜单并选中其第一个选项
+  //   if (items2.length > 0 && items2[0].children && items2[0].children.length > 0) {
+  //     setOpenKeys([items2[0].key]);
+  //     setSelectedMenuKey(items2[0].children[0].key);
+  //   }
+  // }, []);
 
   // 获取一级菜单列表
   useEffect(() => {
@@ -109,39 +138,13 @@ const LayoutPage = () => {
     <Layout className="layout-container"
       style={{
         '--header-height': '64px',
-        '--footer-height': '70px'
+        '--footer-height': '20px'
       }}>
       {/* 头部 */}
-      <Header className="header">
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          // defaultSelectedKeys={['日志']}
-          selectedKeys={selectedKey}
-          items={items1}
-          className="header-menu"
-          onClick={menuClick}
-        />
-
-        <div className="user-info">
-          <Avatar src={<img src='https://api.dicebear.com/7.x/miniavs/svg?seed=8' alt="avatar" />} />
-          <span className="user-name">{username}</span>
-          <span className="user-logout">
-            <Popconfirm title="是否确认退出？" placement="bottomRight" okText="退出" cancelText="取消" onConfirm={logOut}>
-              <LogoutOutlined />
-            </Popconfirm>
-          </span>
-        </div>
-      </Header>
+      <CommonHeader items1={items1} selectedKey={selectedKey} menuClick={menuClick} username={username} logOut={logOut} />
 
       {/* 内容 */}
       <Content className="content">
-        <Breadcrumb className="breadcrumb">
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
         <Layout
           className="inner-layout"
           style={{
@@ -150,15 +153,8 @@ const LayoutPage = () => {
           }}
         >
           {/* 侧边菜单 */}
-          <Sider className="sider" width={200}>
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={['4']}
-              defaultOpenKeys={['4']}
-              style={{ height: '100%' }}
-              items={items2}
-            />
-          </Sider>
+          <CommonSider items2 = {items2} handleClick={handleClick}/>
+          
           <Content className="inner-content">
             <Outlet />
           </Content>
@@ -171,8 +167,8 @@ const LayoutPage = () => {
         style={{ insetInlineEnd: 24, position: 'fixed', bottom: 94, left: 100, }}
         icon={<PlusOutlined />}
       >
-        <FloatButton onClick={() => showModal('article')}/>
-        <FloatButton icon={<UnorderedListOutlined />} onClick={() => showModal('directory')}/>
+        <FloatButton onClick={() => showModal('article')} />
+        <FloatButton icon={<UnorderedListOutlined />} onClick={() => showModal('directory')} />
       </FloatButton.Group>
 
       <AddContent
@@ -184,9 +180,7 @@ const LayoutPage = () => {
       />
 
       {/* 底部 */}
-      <Footer className="footer">
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
+      <CommonFooter />
     </Layout>
   );
 };

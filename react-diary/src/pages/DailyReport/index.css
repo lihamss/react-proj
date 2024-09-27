@@ -6,7 +6,7 @@
 .daily-report-container {
     display: flex; 
     flex-direction: column;
-    height: calc(100vh - 220px); /* 让容器占满父元素 */
+    height: calc(100vh - 175px); /* 让容器占满父元素 */
     /* overflow: auto; */
 }
 
@@ -22,12 +22,14 @@
     gap: 6px; /* 卡片之间的间距 */
     justify-items: center; /* 卡片居中排列 */
     overflow-y: auto; /* 启用滚动条，如果内容太多 */
-    padding: 5px;
+    padding: 2px;
     background-color: #f9f9f9;
 }
 
 .ant-pagination {
-    margin-top: 20px;
+    margin-top: 10px;
+    /* position: relative;
+    bottom: 1px; */
 }
 .ant-card-body {
     padding: 8px;
@@ -47,7 +49,7 @@
     flex-grow: 1; /* 让卡片容器占据剩余空间 */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* 设定每个卡片最小宽度为250px，并根据页面宽度自适应 */
-    gap: 6px; /* 卡片之间的间距 */
+    gap: 5px; /* 卡片之间的间距 */
     justify-items: center; /* 卡片居中排列 */
     overflow-y: auto; /* 启用滚动条，如果内容太多 */
     padding: 5px;

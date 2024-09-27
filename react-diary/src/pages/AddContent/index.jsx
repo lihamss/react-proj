@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import * as AntIcons from '@ant-design/icons';
 import { createCategory } from '@/apis/category';
+import { fetchCategoryList1 } from '@/store/modules/categroy';
 const { Option } = Select;
 
 const iconNames = [
@@ -80,7 +81,7 @@ const IconSelect = ({ value, onChange }) => {
 // 通用的添加内容组件
 const AddContent = ({ type, isModalVisible, onOk, onCancel, category1List }) => {
     const [form] = Form.useForm();
-
+    const dispatch = useDispatch();
     const optionLists = [{}]
     useEffect(() => {
         const optionLists = category1List.map(item => ({
@@ -123,6 +124,8 @@ const AddContent = ({ type, isModalVisible, onOk, onCancel, category1List }) => 
         console.log(res)
         if (res.code === '1') {
             message.success("添加成功")
+            await  dispatch(fetchCategoryList1());  // 等待fetchCategoryList1完成
+            console.log("fethccc")
         }
         // 这里可以添加提交逻辑
         onOk(values); // 调用父组件传递的onOk函数，可以传递表单值
